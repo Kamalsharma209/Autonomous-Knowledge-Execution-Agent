@@ -1,0 +1,49 @@
+{
+  "name": "agentic-ai-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@langchain/community": "^1.1.29",
+    "@langchain/core": "^1.2.1",
+    "@langchain/openai": "^1.5.3",
+    "@prisma/client": "^5.22.0",
+    "cors": "^2.8.6",
+    "csv-parse": "^7.0.1",
+    "date-fns": "^4.4.0",
+    "express": "^5.2.1",
+    "lucide-react": "^1.23.0",
+    "multer": "^2.2.0",
+    "next": "16.2.10",
+    "openai": "^6.45.0",
+    "prisma": "^5.22.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.9.2",
+    "uuid": "^14.0.1",
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.2.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/uuid": "^10.0.0",
+    "@types/ws": "^8.18.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  }
+}
