@@ -1,0 +1,20 @@
+[
+  {
+    "employeeId": "EMP006",
+    "name": "Neha Verma",
+    "email": "neha.verma@company.com",
+    "department": "Engineering",
+    "designation": "Frontend Developer",
+    "salary": 82000,
+    "leaveBalance": 14
+  },
+  {
+    "employeeId": "EMP007",
+    "name": "Rajesh Gupta",
+    "email": "rajesh.gupta@company.com",
+    "department": "Sales",
+    "designation": "Sales Executive",
+    "salary": 55000,
+    "leaveBalance": 20
+  }
+]
