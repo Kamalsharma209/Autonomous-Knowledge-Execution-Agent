@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Employee {
+  id           String   @id @default(cuid())
+  employeeId   String   @unique
+  name         String
+  email        String   @unique
+  department   String
+  designation  String
+  salary       Float
+  leaveBalance Float    @default(0)
+  phone        String?
+  address      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  leaveRequests LeaveRequest[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  productId   String   @unique
+  name        String
+  category    String
+  price       Float
+  cost        Float
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  inventory Inventory[]
+}
+
+model Policy {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  content     String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Inventory {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  quantity   Int
+  location   String
+  minStock   Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model LeaveRequest {
+  id          String   @id @default(cuid())
+  employeeId  String
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  reason      String
+  status      String   @default("PENDING")
+  days        Float
+  reviewedBy  String?
+  comments    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(cuid())
+  orderId       String   @unique
+  customerName  String
+  customerEmail String
+  productId     String
+  quantity      Int
+  totalAmount   Float
+  status        String   @default("PENDING")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AuditLog {
+  id                String   @id @default(cuid())
+  timestamp         DateTime @default(now())
+  userQuery         String
+  retrievedKnowledge String?
+  reasoning         String?
+  selectedTool      String?
+  actionExecuted    String?
+  executionStatus   String
+  finalResponse     String?
+  metadata          String?
+  createdAt         DateTime @default(now())
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  sessionId String
+  role      String
+  content   String
+  metadata  String?
+  createdAt DateTime @default(now())
+}
+
+model Memory {
+  id          String   @id @default(cuid())
+  sessionId   String
+  key         String
+  value       String
+  type        String   @default("preference")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model KnowledgeDocument {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  source      String
+  category    String?
+  embedding   String?
+  metadata    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
